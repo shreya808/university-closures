@@ -94,13 +94,13 @@ institution_names <- read_csv("institution_names.csv") %>% #list of institutions
   distinct()
 
 degrees_by_year <- degrees_by_year %>% 
-  left_join(institution_names, by = join_by(unitid == UnitID))
+  left_join(institution_names, by = join_by(unitid == UnitID),
+            relationship = "many-to-one") %>% 
+  clean_names()
 
 majors_discontinued <- degrees_by_year %>% 
   # look only at programs that don't have any people in 2-digit cip major in 2023
   filter(total_2_2023 == 0) 
 
-
-
-
-            
+# first 140 are unknown
+institutions_missing <- degrees_by_year %>% filter(is.na(institution_name)) %>% distinct(unitid)
