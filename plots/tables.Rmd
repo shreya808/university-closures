@@ -1,0 +1,36 @@
+---
+title: "Tables"
+author: "Shreya Sinha"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+source("ipeds_analysis.R")
+library(knitr)
+```
+
+# Change in Number of Majors Offered by Discipline
+
+```{r echo=FALSE}
+discipline_change %>% 
+  select(-year) %>% 
+  knitr::kable(
+    col.names = c("Discipline", "Number of Majors Offered in Discipline in 2023", "Percent Change in Number of Majors (%)"),
+    digits = 2,
+    booktabs = TRUE
+  )
+```
+
+# Change in Number of Programs Offered
+
+```{r echo=FALSE}
+major_change %>% 
+  knitr::kable(
+    col.names = c("CIP Family", "CIP Title", "Number of Majors Offered in 2023", "Percent Change in Number of Majors (%)"),
+    digits = 2,
+    booktabs = TRUE
+  )
+```
+
