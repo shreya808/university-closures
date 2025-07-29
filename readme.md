@@ -1,9 +1,3 @@
----
-output:
-  html_document: default
-  pdf_document: 
-    fig_crop: false
----
 
 # IPEDS Data Analysis
 
